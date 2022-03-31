@@ -24,5 +24,5 @@ Route::get('/publicaciones', function (Request $request) {
 });
 
 Route::get('/publicaciones/{id}', function (Request $request, $id) {
-    return Publicacion::find($id);
+    return Publicacion::findOrFail($id);
 });
