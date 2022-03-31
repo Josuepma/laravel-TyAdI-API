@@ -26,3 +26,7 @@ Route::get('/publicaciones', function (Request $request) {
 Route::get('/publicaciones/{id}', function (Request $request, $id) {
     return Publicacion::findOrFail($id);
 });
+
+Route::post('/publicaciones/', function (Request $req) {
+    return Publicacion::create($req->all());
+});
