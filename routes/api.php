@@ -19,6 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('publicaciones', function (Request $request) {
-    return Publicacion::get();
+Route::get('/publicaciones', function (Request $request) {
+    return Publicacion::all();
+});
+
+Route::get('/publicaciones/{id}', function (Request $request, $id) {
+    return Publicacion::find($id);
 });
