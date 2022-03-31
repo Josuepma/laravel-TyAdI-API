@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\PublicacionesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Publicacion;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,14 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/publicaciones', function (Request $request) {
-    return Publicacion::all();
-});
+Route::get('/publicaciones', 'PublicacionesController@getAll');
 
-Route::get('/publicaciones/{id}', function (Request $request, $id) {
-    return Publicacion::findOrFail($id);
-});
+Route::get('/publicaciones/{id}', 'PublicacionesController@find');
 
-Route::post('/publicaciones/', function (Request $req) {
-    return Publicacion::create($req->all());
-});
+Route::post('/publicaciones/', 'PublicacionesController@create');
